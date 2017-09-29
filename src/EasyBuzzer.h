@@ -27,16 +27,18 @@ public:
 	void setPin(int pin);
 	/* Update function that keeps the library running. */
 	void update();
-	/* Create a sound sequence at a given frequency. */
+	/* Beep continuously at a given frequency. */
+	void beep(unsigned int frequency);
+	/* Beep once at a given frequency. */
+	void beep(unsigned int frequency, unsigned int duration);
+	/* Beep at given frequency, for duration time, with callback functionality. */
+	void beep(unsigned int frequency, unsigned int duration, void(*finishedCallbackFunction)());
+	/* Beep sequence at a given frequency, with callback functionality. */
 	void beepSequence(unsigned int frequency, unsigned int const onDuration, unsigned int const offDuration, byte const beeps, unsigned int const pauseDuration, unsigned int const sequences, void(*finishedCallbackFunction)());
-	/* Sound continuously at a given frequency. */
-	void beep(int frequency);
-	/* Sound a at given frecuency for duration time, then call a function. */
-	void beep(int frequency, int duration, void(*finishedCallbackFunction)());
-	/* Stop sound. */
+	/* Stop beeping. */
 	void stopBeep();
 private:
-	int mPin = DEFAULT_PIN;
+	unsigned int mPin = DEFAULT_PIN;
 	unsigned int mFreq = DEFAULT_FREQ;
 	unsigned int mChannel = DEFAULT_CHANNEL;
 	unsigned int mResolution = DEFAULT_RESOLUTION;

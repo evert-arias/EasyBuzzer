@@ -19,6 +19,17 @@ Support for this others platforms will be added `Arduino`  `Particle Photon`  `P
 
 `#include <EasyBuzzer.h>`
 
+##### Set the Pin where the Buzzer is connected
+
+By default, the pin number `4` is selected. You may change the default pin number in the `Config.h` file. To change the pin number on the run call the function `EasyBuzzer.setPin(pin)` on the setup.
+
+```c++
+int pin = 2;
+void setup() {
+  EasyBuzzer.setPin(pin);
+}
+```
+
 ##### Run the library
 
 ``` c++
@@ -44,6 +55,18 @@ EasyBuzzer.beep(frequency);	// Frequency in hertz(HZ).
 ```
 
 
+#### Stop beeping
+
+`EasyBuzzer.stopBeep()` 
+
+Use this function to stop the beeping. You may call this function at all time, everywhere in the code. This function is rarely used. Only when you run a beep continuously and you need to stop it manually.
+
+```
+EasyBuzzer.stopBeep();
+```
+
+
+
 #### Beep Once
 
 `EasyBuzzer.beep(frequency, duration)`
@@ -63,7 +86,7 @@ EasyBuzzer.beep(
 
 `EasyBuzzer.beep(frequency, duration, callback)`
 
-Use this function to beep at a given `frequency` for a `duration  ` and make a `callback` at the end.
+Use this function to beep at a given `frequency` for a `duration  ` and make a call to a given `function` when the sequence ends.
 
 ```c++
 // This function will be called when the beeping sequence ends.
@@ -81,11 +104,6 @@ void setup() {
 		100,		// Duration in milliseconds(ms).
 		finished	// Callback. A function to call when the beep ends.
 	);
-}
-// Loop
-void loop() {
-	// Always call this function in the loop for EasyBuzzer to work.
-	EasyBuzzer.update();
 }
 ```
 
@@ -120,7 +138,7 @@ EasyBuzzer.beepSequence(
 EasyBuzzer.beepSequence(frequency, onDuration, offDuration, cycles, pauseDuration, sequences, callback)
 ```
 
-Use this function to create a sequence of beeps at a given `frequency` and make a `callback` when the sequence ends.
+Use this function to create a sequence of beeps at a given `frequency` and make a call to a given `function` when the sequence ends.
 
 ```c++
 // This function will be called when the beeping sequence ends.

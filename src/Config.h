@@ -1,5 +1,5 @@
 /*
-Name:		EasyBuzzer.h
+Name:		Config.h
 Version:	1.0.0
 Created:	9/29/2017 12:03:48 AM
 Author:		Evert Arias
@@ -12,7 +12,7 @@ Copyright (c) 2017 Evert Arias
 #ifndef _Config_h
 #define _Config_h
 
-#define DEFAULT_PIN			4		// Default Pin.	
+#define DEFAULT_PIN			4		// Default Pin where the Buzzer is connected.	
 #define DEFAULT_FREQ		1000    // Default frequency.
 #define DEFAULT_CHANNEL		0		// Default PWM channel.
 #define DEFAULT_RESOLUTION	8		// Default resolution.

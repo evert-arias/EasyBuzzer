@@ -3,7 +3,7 @@ Name:		EasyBuzzer.h
 Version:	1.0.0
 Created:	9/29/2017 12:03:48 AM
 Author:		Evert Arias
-Github:		https://github.com/evert-arias/Esp32-Buzzer
+Github:		https://github.com/evert-arias/EasyBuzzer
 			Copyright (c) 2017 Evert Arias
 */
 
@@ -13,7 +13,7 @@ EasyBuzzerClass::EasyBuzzerClass(){
 	ledcSetup(mChannel, mFreq, mResolution);
 }
 
-EasyBuzzerClass::~EasyBuzzerClass() {}
+EasyBuzzerClass::~EasyBuzzerClass(){}
 
 void EasyBuzzerClass::setPin(int pin) {
 	mPin = pin;
@@ -52,6 +52,18 @@ void EasyBuzzerClass::update() {
 	};
 }
 
+void EasyBuzzerClass::beep(unsigned int frequency) {
+	beepSequence(frequency, 1, 0, 1, 0, 0, NULL);
+}
+
+void EasyBuzzerClass::beep(unsigned int frequency, unsigned int duration) {
+	beepSequence(frequency, duration, 1000, 1, 1000, 1, NULL);
+}
+
+void EasyBuzzerClass::beep(unsigned int frequency, unsigned int duration, void(*finishedCallbackFunction)()) {
+	beepSequence(frequency, duration, 0, 1, 0, 1, finishedCallbackFunction);
+}
+
 void EasyBuzzerClass::beepSequence(unsigned int frequency, unsigned int const onDuration, unsigned int const offDuration, byte const beeps, unsigned int const pauseDuration, unsigned int const sequences, void(*finishedCallbackFunction)()) {
 	mFreq = frequency;
 	mOnDuration = onDuration ? max(MINIMUM_INTERVAL, onDuration) : 0;
@@ -63,14 +75,6 @@ void EasyBuzzerClass::beepSequence(unsigned int frequency, unsigned int const on
 	mStartTime = max(millis(), 1);
 	mLastRunTime = 0;
 	update();
-}
-
-void EasyBuzzerClass::beep(int frequency) {
-	beepSequence(frequency, 1, 0, 1, 0, 0, NULL);
-}
-
-void EasyBuzzerClass::beep(int frequency, int duration, void(*finishedCallbackFunction)()) {
-	beepSequence(frequency, duration, 0, 1, 0, 1, finishedCallbackFunction);
 }
 
 void EasyBuzzerClass::stopBeep() {
