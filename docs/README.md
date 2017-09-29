@@ -1,4 +1,4 @@
-# Buzzer
+# EasyBuzzer
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 A library to easily make sounds with a Buzzer.
