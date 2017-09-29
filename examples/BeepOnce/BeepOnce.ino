@@ -1,5 +1,5 @@
 /*
-	EasyBuzzer - BeepOnce Example
+	EasyBuzzer - Beep Once Example
 	This example shows you how to make a single beep at given frequency.
 	Copyright (c) 2017, Evert Arias
 	MIT License
