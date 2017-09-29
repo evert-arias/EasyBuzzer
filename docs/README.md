@@ -32,9 +32,11 @@ void loop() {
 
 ## Uses
 
-#### Beep Once
+#### Beep Once  
 
-Use this function `EasyBuzzer.beep()` to make a single beep at given frequency. Note that you have to use a callback function to stop the beeping sound of the buzzer.
+`EasyBuzzer.beep()`
+
+Use this function to make a single beep at given frequency. Note that you have to use a callback function to stop the beeping sound of the buzzer.
 
 ```c++
 // This function will be called when the beeping sequence ends.
@@ -42,7 +44,6 @@ void finished() {
   // This function stop the beeping.
   EasyBuzzer.stopBeep();
 };
-
 // Beep once.
 EasyBuzzer.beep(
   1000,		// Beep's frequency.
@@ -51,10 +52,11 @@ EasyBuzzer.beep(
 );
 ```
 
+#### Beep Sequence 
 
-#### Beep Sequence
+`EasyBuzzer.beepSequence()`
 
-This function creates a sequence of beeps at a given frequency. 
+Use this function to create a sequence of beeps at a given frequency. 
 
 ```c++
 // Start a beeping sequence
@@ -69,17 +71,17 @@ EasyBuzzer.beepSequence(
 );
 ```
 
-
 #### Beep Sequence With A Callback
 
-This function creates a sequence of beeps at a given frequency and make a call to a given function when the sequence ends.
+`EasyBuzzer.beepSequence()`
+
+Use this function to create a sequence of beeps at a given frequency and make a call to a given function when the sequence ends.
 
 ```c++
 // This function will be called when the beeping sequence ends.
 void finished() {
   Serial.println("Done!");
 };
-
 // Start a beeping sequence.
 EasyBuzzer.beepSequence(
   1000,		// Beep's frequency.
