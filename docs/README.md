@@ -25,7 +25,7 @@ Support for this others platforms will be added.
 
 ``` c++
 void loop() {
-	// Always call this function in the loop for EasyBuzzer to work.
+	/* Always call this function in the loop for EasyBuzzer to work. */
 	EasyBuzzer.update();
 }
 ```
