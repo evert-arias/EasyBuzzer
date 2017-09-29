@@ -9,11 +9,9 @@ A library to easily make sounds with a Buzzer.
 
 ## Supported Platforms
 
-Currently **only supports** the `Esp32` platform. 
+Currently only supports the `Esp32` platform. 
 
-Support for this others platforms will be added. 
-
- `Arduino`  `Particle Photon`  `Particle Electron`
+Support for this others platforms will be added `Arduino`  `Particle Photon`  `Particle Electron`
 
 ## Getting Started
 
