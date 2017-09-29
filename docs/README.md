@@ -3,6 +3,8 @@
 
 A library to easily make sounds with a Buzzer.
 
+*This library is currently under development. Fixes and new features as well as support for more platforms will be included in further releases. If you find any issue please report it in the issues section.* 
+
 
 
 ## Supported Platforms
