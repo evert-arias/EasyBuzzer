@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD
 	EasyBuzzer - Beep Once
+=======
+	EasyBuzzer - Beep Once Example
+>>>>>>> 0b3cf33fdb1dc1cd2eb64c807087ea3db9797260
 	This example shows you how to make a single beep at given frequency.
 	Copyright (c) 2017, Evert Arias
 	MIT License
