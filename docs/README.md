@@ -58,13 +58,13 @@ This function creates a sequence of beeps at a given frequency.
 ```c++
 // Start a beeping sequence.
 EasyBuzzer.beepSequence(
-	1000,			// Beep's frequency
-	50,				// On duration
-	100,			// Off duration
-	2,				// Cycles
-	500,			// Pause duration
-	1,      		// Sequences
-	NULL			// Optional. A function to call when the sequence ends.
+	1000,	// Beep's frequency
+	50,		// On duration
+	100,	// Off duration
+	2,		// Cycles
+	500,	// Pause duration
+	1,      // Sequences
+	NULL	// Optional. A function to call when the sequence ends.
 );
 ```
 
@@ -80,13 +80,13 @@ void finished() {
 };
 // Start a beeping sequence
 EasyBuzzer.beepSequence(
-	1000,			// Beep's frequency
-	50,				// On duration
-	100,			// Off duration
-	2,				// The number of beeps per cycle
-	500,			// Pause duration
-	10,				// The number of cycles
-	finished		// Optional. A function to call when the sequence ends.
+	1000,		// Beep's frequency
+	50,			// On duration
+	100,		// Off duration
+	2,			// The number of beeps per cycle
+	500,		// Pause duration
+	10,			// The number of cycles
+	finished	// Optional. A function to call when the sequence ends.
 );
 ```
 
