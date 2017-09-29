@@ -1,6 +1,6 @@
 /*
 Name:		EasyBuzzer.h
-Version:	v0.1-alpha
+Version:	1.0.0
 Created:	9/29/2017 12:03:48 AM
 Author:		Evert Arias
 Github:		https://github.com/evert-arias/Esp32-Buzzer
