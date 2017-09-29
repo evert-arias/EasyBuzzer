@@ -1,3 +1,32 @@
 #######################################
 # Syntax Coloring Map For EasyBuzzer
 #######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+EasyBuzzerClass	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+setPin	KEYWORD2
+update	KEYWORD2
+beep	KEYWORD2
+beepSequence	KEYWORD2
+stopBeep	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+EasyBuzzer	KEYWORD2
+#######################################
+# Constants (LITERAL1)
+#######################################
+DEFAULT_PIN	LITERAL1
+DEFAULT_FREQ	LITERAL1
+DEFAULT_CHANNEL	LITERAL1
+DEFAULT_RESOLUTION	LITERAL1
+MINIMUM_INTERVAL	LITERAL1
