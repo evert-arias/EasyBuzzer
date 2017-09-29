@@ -9,7 +9,7 @@ A library to easily make beeps with a Buzzer.
 
 ## Supported Platforms
 
-Currently only supports the `Esp32` platform. 
+Currently supports the `Esp32` platform only.
 
 Support for this others platforms will be added `Arduino`  `Particle Photon`  `Particle Electron`
 
