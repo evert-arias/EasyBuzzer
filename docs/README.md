@@ -3,7 +3,7 @@
 
 A library to easily make sounds with a Buzzer.
 
-*This library is currently under development. Fixes and new features as well as support for more platforms will be included in further releases. If you find any issue please report it in the issues section.* 
+*This library is currently under development. Fixes and new features as well as support for more platforms will be included in further releases. If you find any issue please report it in the issues section.*
 
 
 
@@ -25,7 +25,7 @@ Support for this others platforms will be added.
 
 ``` c++
 void loop() {
-	// Always call this function in the loop for EasyBuzzer to work.
+	// Always call this function in the loop for EasyBuzzer to work
 	EasyBuzzer.update();
 }
 ```
@@ -58,7 +58,7 @@ EasyBuzzer.beep(
 This function creates a sequence of beeps at a given frequency. 
 
 ```c++
-// Start a beeping sequence.
+// Start a beeping sequence
 EasyBuzzer.beepSequence(
 	1000,		// Beep's frequency
 	50,			// On duration
@@ -66,7 +66,7 @@ EasyBuzzer.beepSequence(
 	2,			// Cycles
 	500,		// Pause duration
 	1,      	// Sequences
-	NULL		// Optional. A function to call when the sequence ends.
+	NULL		// [Optional] A function to call when the sequence ends
 );
 ```
 
@@ -88,7 +88,7 @@ EasyBuzzer.beepSequence(
 	2,			// The number of beeps per cycle
 	500,		// Pause duration
 	10,			// The number of cycles
-	finished	// Optional. A function to call when the sequence ends.
+	finished	// [Optional] A function to call when the sequence ends
 );
 ```
 
