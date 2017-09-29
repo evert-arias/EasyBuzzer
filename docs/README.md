@@ -1,7 +1,7 @@
 # EasyBuzzer
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
-A library to easily make sounds with a Buzzer.
+A library to easily make beeps with a Buzzer.
 
 *This library is currently under development. Fixes and new features as well as support for more platforms will be included in further releases. If you find any issue please report it in the issues section.*
 
