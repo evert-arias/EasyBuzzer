@@ -32,8 +32,7 @@ void setup() {
 	// EasyBuzzer.start(frequency, duration, done);
 
 	/* Beep at a given frequency an specific number of beeps. */
-	EasyBuzzer.setDuration(1000, 1000, 1000);
-	EasyBuzzer.beep(frequency, beeps);
+	// EasyBuzzer.beep(frequency, beeps);
 	
 	/* Beep at a given frequency an specific number of beeps, with callback functionality. */
 	// EasyBuzzer.beep(frequency, beeps, done);

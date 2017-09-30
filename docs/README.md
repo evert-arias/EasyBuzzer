@@ -21,7 +21,7 @@ Support for this others platforms will be added `Arduino`  `Particle Photon`  `P
 
 ##### Set the Pin where the Buzzer is connected
 
-By default, the pin number `4` is selected. You may change the default pin number in the `Config.h` file. To change the pin number on the run call the function `EasyBuzzer.setPin(pin)` on the setup.
+By default, the library use the pin number 4. You may change the default pin number in the `Config.h` file. To set the pin number, call the function `EasyBuzzer.setPin(pin)` on the setup.
 
 ```c++
 int pin = 2;
