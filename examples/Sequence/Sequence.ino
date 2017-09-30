@@ -8,15 +8,14 @@
 #include <EasyBuzzer.h>
 
 void setup() {
-	// Start a beeping sequence
+	// Start a beeping sequence.
 	EasyBuzzer.beepSequence(
-		1000,		// Beep's frequency.
-		50,			// On duration.
-		100,		// Off duration.
-		2,			// Cycles.
+		1000,		// Frequency in hertz(HZ).
+		50,			// On Duration in milliseconds(ms).
+		100,		// Off Duration in milliseconds(ms).
+		2,			// The number of beeps per cycle.
 		500,		// Pause duration.
-		1,      	// Sequences.
-		NULL		// [Optional] A function to call when the sequence ends.
+		10      	// The number of cycle.
 	);
 }
 
