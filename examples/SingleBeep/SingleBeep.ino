@@ -1,6 +1,6 @@
 /*
 	EasyBuzzer - Single Beep Example
-	This example shows single beep methods.
+	This example shows single beeps methods.
 	Copyright (c) 2017, Evert Arias
 	MIT License
 */

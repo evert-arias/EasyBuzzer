@@ -1,6 +1,6 @@
 /*
 	EasyBuzzer - Beep Sequence
-	This example shows you how to create a sequence of beeps at a given frequency.
+	This example shows you how to create a sequence of beeps, at a given frequency.
 	Copyright (c) 2017, Evert Arias
 	MIT License
 */

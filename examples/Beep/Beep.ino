@@ -1,6 +1,6 @@
 /*
 	EasyBuzzer - Regular Beep Example
-	This example shows the differents beeps methods.
+	This example shows the different beeps methods.
 	Copyright (c) 2017, Evert Arias
 	MIT License
 */
