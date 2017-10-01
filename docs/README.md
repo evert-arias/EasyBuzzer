@@ -3,9 +3,7 @@
 
 A library to easily make beeps with a Buzzer.
 
-*This library is currently under development. Fixes and new features as well as support for more platforms will be included in further releases. If you find any issue please report it in the issues section.*
-
-
+*Fixes and new features as well as support for more platforms will be included in further releases.*
 
 ## Supported Platforms
 
@@ -15,13 +13,13 @@ Support for this others platforms will be added `Arduino`  `Particle Photon`  `P
 
 ## Getting Started
 
-##### Include the library in the sketch
+###### Include the library in the sketch
 
 `#include <EasyBuzzer.h>`
 
-##### Set the Pin where the Buzzer is connected
+###### Set the pin where the buzzer is connected
 
-By default, the library use the pin number 4. You may change the default pin number in the `Config.h` file. To set the pin number, call the function `EasyBuzzer.setPin(pin)` on the setup.
+By default, the library is configured to use the pin number 4. You may change the default pin number, modifying the value of `DEFAULT_PIN`  in *Config.h* file. To set the pin number on the sketch, call the function `EasyBuzzer.setPin(pin)` on the setup.
 
 ```c++
 int pin = 2;
@@ -30,11 +28,11 @@ void setup() {
 }
 ```
 
-##### Run the library
+###### Run the library
 
 ``` c++
 void loop() {
-  // Always call this function in the loop for EasyBuzzer to work.
+  /* Always call this function in the loop for EasyBuzzer to work. */
   EasyBuzzer.update();
 }
 ```
@@ -43,118 +41,90 @@ void loop() {
 
 ## Uses
 
-#### Beep Continuously
+#### Regular Beep
 
-`EasyBuzzer.beep(frequency)`
-
-Use this function to beep continuously at a given `frequency`. Note that you must call `EasyBuzzer.stopBeep()` to stop beeping.
+Beep continuously at a given frequency.
 
 ```c++
-// Beep continuously.
-EasyBuzzer.beep(frequency);	// Frequency in hertz(HZ).
-```
-
-
-#### Stop beeping
-
-`EasyBuzzer.stopBeep()` 
-
-Use this function to stop the beeping. You may call this function at all time, everywhere in the code. This function is rarely used. Only when you run a beep continuously and you need to stop it manually.
-
-```
-EasyBuzzer.stopBeep();
-```
-
-
-
-#### Beep Once
-
-`EasyBuzzer.beep(frequency, duration)`
-
-Use this function to beep once at a given frequency `frequency` for a `duration`.
-
-```c++
-// Beep once.
+/* Beep continuously */
 EasyBuzzer.beep(
-  1000,		// Frequency in hertz(HZ).
-  100	    // Duration in milliseconds(ms).
+  frequency		// Frequency in Hertz(HZ).
 );
 ```
 
-
-#### Beep With Callback  
-
-`EasyBuzzer.beep(frequency, duration, callback)`
-
-Use this function to beep at a given `frequency` for a `duration  ` and make a call to a given `function` when the sequence ends.
+Beep at a given frequency an specific number of times.
 
 ```c++
-// This function will be called when the beeping sequence ends.
-void finished() {
-	// This function stop the beeping.
-	EasyBuzzer.stopBeep();
-	Serial.println("Done!");
-};
-// Setup
-void setup() {
-	Serial.begin(115200);
-	// Beep.
-	EasyBuzzer.beep(
-		1000,		// Frequency in hertz(HZ).
-		100,		// Duration in milliseconds(ms).
-		finished	// Callback. A function to call when the beep ends.
-	);
-}
+/* Beep at a given frequency an specific number of times */
+EasyBuzzer.beep(
+  frequency,	// Frequency in Hertz(HZ).
+  beeps			// The number of beeps.
+);
 ```
 
-
-
-#### Beep Sequence 
+Beep at a given frequency an specific number of times, with callback functionality.
 
 ```c++
-EasyBuzzer.beepSequence(frequecy, onDuration, offDuration, cycles, pauseDuration, sequences, callback)
-```
-
-Use this function to start a sequence of beeps at a given frequency. 
-
-```c++
-// Start a beeping sequence
-EasyBuzzer.beepSequence(
-  1000,		// Frequency in hertz(HZ).
-  50,		// On Duration in milliseconds(ms).
-  100,		// Off Duration in milliseconds(ms).
-  2,		// The number of beeps per cycle.
-  500,		// Pause duration.
-  1,      	// The number of cycle.
-  NULL		// [Optional] Callback. A function to call when the sequence ends.
+/* Beep at a given frequency an specific number of times, with callback functionality */
+EasyBuzzer.beep(
+  frequency,	// Frequency in Hertz(HZ).
+  beeps,		// The number of beeps. 
+  callback		// [Optional] Function to call when done.
 );
 ```
 
 
 
-#### Beep Sequence With A Callback
+#### Beep Sequence
+
+Create a sequence of beeps at a given frequency. 
 
 ```c++
-EasyBuzzer.beepSequence(frequency, onDuration, offDuration, cycles, pauseDuration, sequences, callback)
+/* Create a sequence of beeps at a given frequency */
+EasyBuzzer.beep(
+  frequency,		// Frequency in hertz(HZ). 
+  onDuration, 		// On Duration in milliseconds(ms).
+  offDuration, 		// Off Duration in milliseconds(ms).
+  beeps, 			// The number of beeps per cycle.
+  pauseDuration, 	// Pause duration.
+  cycles, 		    // The number of cycle.
+  callback			// [Optional] Function to call when done.
+);	
 ```
 
-Use this function to create a sequence of beeps at a given `frequency` and make a call to a given `function` when the sequence ends.
+
+
+#### Single Beep For A Duration 
+
+Single beep at a given frequency, for an specific duration.
 
 ```c++
-// This function will be called when the beeping sequence ends.
-void finished() {
-  Serial.println("Done!");
-};
-// Start a beeping sequence.
-EasyBuzzer.beepSequence(
-  1000,		// Frequency in hertz(HZ).
-  50,		// On Duration in milliseconds(ms).
-  100,		// Off Duration in milliseconds(ms).
-  2,		// The number of beeps per cycle.
-  500,		// Pause duration.
-  10,		// The number of cycle.
-  finished	// [Optional] A function to call when the sequence ends.
+/* Single beep */
+EasyBuzzer.singleBeep(
+  frequency,	// Frequency in hertz(HZ).  
+  duration		// Duration of the beep in milliseconds(ms). 
 );
+```
+
+Single beep at a given frequency, for an specific duration, with callback functionality.
+
+```c++
+/* Single beep at a given frequency, for an specific duration, with callback functionality */
+EasyBuzzer.singleBeep(
+  frequency, 	// Frequency in hertz(HZ).  
+  duration, 	// Duration of the beep in milliseconds(ms). 
+  callback		// [Optional] Function to call when done.
+);
+```
+
+
+
+#### Stop Beeping
+
+Use this function to stop the beeping. You may call this function at all time, everywhere in the code.
+
+```c++
+EasyBuzzer.stopBeep();
 ```
 
 
