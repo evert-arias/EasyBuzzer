@@ -58,7 +58,7 @@ Beep at a given frequency an specific number of times.
 /* Beep at a given frequency an specific number of times */
 EasyBuzzer.beep(
   frequency,	/* Frequency in Hertz(HZ). */
-  beeps			/* The number of beeps. */
+  beeps	/* The number of beeps. */
 );
 ```
 
@@ -68,8 +68,8 @@ Beep at a given frequency an specific number of times, with callback functionali
 /* Beep at a given frequency an specific number of times, with callback functionality */
 EasyBuzzer.beep(
   frequency,	/* Frequency in Hertz(HZ). */
-  beeps,		/* The number of beeps. */
-  callback		/* [Optional] Function to call when done. */
+  beeps,	/* The number of beeps. */
+  callback	/* [Optional] Function to call when done. */
 );
 ```
 
