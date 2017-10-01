@@ -46,30 +46,30 @@ void loop() {
 Beep continuously at a given frequency.
 
 ```c++
-/* Beep continuously */
+/* Beep continuously. */
 EasyBuzzer.beep(
-  frequency	/* Frequency in Hertz(HZ). */
+  frequency	// Frequency in Hertz(HZ).
 );
 ```
 
 Beep at a given frequency an specific number of times.
 
 ```c++
-/* Beep at a given frequency an specific number of times */
+/* Beep at a given frequency an specific number of times. */
 EasyBuzzer.beep(
-  frequency,	/* Frequency in Hertz(HZ). */
-  beeps		/* The number of beeps. */
+  frequency,	// Frequency in Hertz(HZ).
+  beeps			// The number of beeps.
 );
 ```
 
 Beep at a given frequency an specific number of times, with callback functionality.
 
 ```c++
-/* Beep at a given frequency an specific number of times, with callback functionality */
+/* Beep at a given frequency an specific number of times, with callback functionality. */
 EasyBuzzer.beep(
-  frequency,	/* Frequency in Hertz(HZ). */
-  beeps,	/* The number of beeps. */
-  callback	/* [Optional] Function to call when done. */
+  frequency,	// Frequency in Hertz(HZ).
+  beeps,	    // The number of beeps.
+  callback	    // [Optional] Function to call when done.
 );
 ```
 
@@ -80,9 +80,9 @@ EasyBuzzer.beep(
 Create a sequence of beeps at a given frequency. 
 
 ```c++
-/* Create a sequence of beeps at a given frequency */
+/* Create a sequence of beeps at a given frequency. */
 EasyBuzzer.beep(
-  frequency,		// Frequency in hertz(HZ). 
+  frequency,		// Frequency in hertz(HZ).
   onDuration, 		// On Duration in milliseconds(ms).
   offDuration, 		// Off Duration in milliseconds(ms).
   beeps, 			// The number of beeps per cycle.
@@ -99,7 +99,7 @@ EasyBuzzer.beep(
 Single beep at a given frequency, for an specific duration.
 
 ```c++
-/* Single beep */
+/* Single beep. */
 EasyBuzzer.singleBeep(
   frequency,	// Frequency in hertz(HZ).
   duration		// Duration of the beep in milliseconds(ms).
@@ -109,7 +109,7 @@ EasyBuzzer.singleBeep(
 Single beep at a given frequency, for an specific duration, with callback functionality.
 
 ```c++
-/* Single beep at a given frequency, for an specific duration, with callback functionality */
+/* Single beep at a given frequency, for an specific duration, with callback functionality. */
 EasyBuzzer.singleBeep(
   frequency, 	// Frequency in hertz(HZ).
   duration, 	// Duration of the beep in milliseconds(ms).
