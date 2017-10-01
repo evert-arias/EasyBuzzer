@@ -101,9 +101,9 @@ Single beep at a given frequency, for an specific duration.
 ```c++
 /* Single beep */
 EasyBuzzer.singleBeep(
-  frequency,	// Frequency in hertz(HZ).  
-  duration		// Duration of the beep in milliseconds(ms). 
-  );
+  frequency,	// Frequency in hertz(HZ).
+  duration		// Duration of the beep in milliseconds(ms).
+);
 ```
 
 Single beep at a given frequency, for an specific duration, with callback functionality.
@@ -111,10 +111,10 @@ Single beep at a given frequency, for an specific duration, with callback functi
 ```c++
 /* Single beep at a given frequency, for an specific duration, with callback functionality */
 EasyBuzzer.singleBeep(
-  frequency, 	// Frequency in hertz(HZ).  
-  duration, 	// Duration of the beep in milliseconds(ms). 
+  frequency, 	// Frequency in hertz(HZ).
+  duration, 	// Duration of the beep in milliseconds(ms).
   callback		// [Optional] Function to call when done.
-  );
+);
 ```
 
 
