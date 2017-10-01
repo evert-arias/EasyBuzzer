@@ -13,11 +13,11 @@ Support for these others platforms will be added `Arduino`  `Particle Photon`  `
 
 ## Getting Started
 
-###### Include the library in the sketch
+##### Include the library in the sketch
 
 `#include <EasyBuzzer.h>`
 
-###### Set the pin where the buzzer is connected
+##### Set the pin where the buzzer is connected
 
 By default, the library is configured to use the pin number 4. You may change the default pin number, modifying the value of `DEFAULT_PIN`  in *Config.h* file. To set the pin number on the sketch, call the function `EasyBuzzer.setPin(pin)` on the setup.
 
@@ -28,7 +28,7 @@ void setup() {
 };
 ```
 
-###### Run the library
+##### Run the library
 
 ``` c++
 void loop() {
