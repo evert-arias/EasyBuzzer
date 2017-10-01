@@ -48,8 +48,8 @@ Beep continuously at a given frequency.
 ```c++
 /* Beep continuously */
 EasyBuzzer.beep(
-  frequency		// Frequency in Hertz(HZ).
-);
+  frequency	// Frequency in Hertz(HZ).
+  );
 ```
 
 Beep at a given frequency an specific number of times.
@@ -59,7 +59,7 @@ Beep at a given frequency an specific number of times.
 EasyBuzzer.beep(
   frequency,	// Frequency in Hertz(HZ).
   beeps			// The number of beeps.
-);
+  );
 ```
 
 Beep at a given frequency an specific number of times, with callback functionality.
@@ -70,7 +70,7 @@ EasyBuzzer.beep(
   frequency,	// Frequency in Hertz(HZ).
   beeps,		// The number of beeps. 
   callback		// [Optional] Function to call when done.
-);
+  );
 ```
 
 
@@ -89,7 +89,7 @@ EasyBuzzer.beep(
   pauseDuration, 	// Pause duration.
   cycles, 		    // The number of cycle.
   callback			// [Optional] Function to call when done.
-);	
+  );	
 ```
 
 
@@ -103,7 +103,7 @@ Single beep at a given frequency, for an specific duration.
 EasyBuzzer.singleBeep(
   frequency,	// Frequency in hertz(HZ).  
   duration		// Duration of the beep in milliseconds(ms). 
-);
+  );
 ```
 
 Single beep at a given frequency, for an specific duration, with callback functionality.
@@ -114,7 +114,7 @@ EasyBuzzer.singleBeep(
   frequency, 	// Frequency in hertz(HZ).  
   duration, 	// Duration of the beep in milliseconds(ms). 
   callback		// [Optional] Function to call when done.
-);
+  );
 ```
 
 
