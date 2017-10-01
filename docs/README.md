@@ -25,7 +25,7 @@ By default, the library is configured to use the pin number 4. You may change th
 int pin = 2;
 void setup() {
   EasyBuzzer.setPin(pin);
-}
+};
 ```
 
 ###### Run the library
@@ -34,7 +34,7 @@ void setup() {
 void loop() {
   /* Always call this function in the loop for EasyBuzzer to work. */
   EasyBuzzer.update();
-}
+};
 ```
 
 
@@ -49,7 +49,7 @@ Beep continuously at a given frequency.
 /* Beep continuously */
 EasyBuzzer.beep(
   frequency	/* Frequency in Hertz(HZ). */
-  );
+);
 ```
 
 Beep at a given frequency an specific number of times.
@@ -59,7 +59,7 @@ Beep at a given frequency an specific number of times.
 EasyBuzzer.beep(
   frequency,	/* Frequency in Hertz(HZ). */
   beeps			/* The number of beeps. */
-  );
+);
 ```
 
 Beep at a given frequency an specific number of times, with callback functionality.
@@ -70,7 +70,7 @@ EasyBuzzer.beep(
   frequency,	/* Frequency in Hertz(HZ). */
   beeps,		/* The number of beeps. */
   callback		/* [Optional] Function to call when done. */
-  );
+);
 ```
 
 
@@ -89,7 +89,7 @@ EasyBuzzer.beep(
   pauseDuration, 	// Pause duration.
   cycles, 		    // The number of cycle.
   callback			// [Optional] Function to call when done.
-  );	
+);	
 ```
 
 
