@@ -43,16 +43,16 @@ void loop() {
 
 ### Regular Beep
 
-###### Beep continuously at a given frequency.
+Beep continuously at a given frequency.
 
 ```c++
-/* Beep continuously. */
+/* Beep continuously at a given frequency. */
 EasyBuzzer.beep(
   frequency	// Frequency in Hertz(HZ).
 );
 ```
 
-###### Beep at a given frequency an specific number of times. 
+Beep at a given frequency an specific number of times. 
 
 ```c++
 /* 
@@ -65,7 +65,7 @@ EasyBuzzer.beep(
 );
 ```
 
-###### Beep at a given frequency an specific number of times, with callback functionality.
+Beep at a given frequency an specific number of times, with callback functionality.
 
 ```c++
 /* 
@@ -83,7 +83,7 @@ EasyBuzzer.beep(
 
 ### Beep Sequence
 
-###### Create a sequence of beeps at a given frequency. 
+Create a sequence of beeps at a given frequency. 
 
 ```c++
 /* Create a sequence of beeps at a given frequency. */
@@ -102,7 +102,7 @@ EasyBuzzer.beep(
 
 ### Single Beep For A Duration 
 
-###### Single beep at a given frequency, for an specific duration.
+Single beep at a given frequency, for an specific duration.
 
 ```c++
 /* Single beep. */
@@ -112,7 +112,7 @@ EasyBuzzer.singleBeep(
 );
 ```
 
-###### Single beep at a given frequency, for an specific duration, with callback functionality.
+Single beep at a given frequency, for an specific duration, with callback functionality.
 
 ```c++
 /* Single beep at a given frequency, for an specific duration, with callback functionality. */
@@ -131,6 +131,16 @@ Use this function to stop the beeping. You may call this function at all time, e
 
 ```c++
 EasyBuzzer.stopBeep();
+```
+
+
+
+### Modifying the default duration values
+
+The default duration values are defined in the *Config.h* file. You may change those values on the *Config.h* file or use the provided function to change them.
+
+```c++
+EasyBuzzer.setDuration(onDuration, offDuration, pauseDuration);
 ```
 
 

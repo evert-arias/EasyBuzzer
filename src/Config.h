@@ -12,7 +12,7 @@ Copyright (c) 2017 Evert Arias
 #ifndef _Config_h
 #define _Config_h
 
-#define DEFAULT_PIN			4		// Default Pin where the Buzzer is connected.	
+#define DEFAULT_PIN			4		// Default pin number where the buzzer is connected.	
 #define DEFAULT_FREQ		1000    // Default frequency.
 #define DEFAULT_CHANNEL		0		// Default PWM channel.
 #define DEFAULT_RESOLUTION	8		// Default resolution.
