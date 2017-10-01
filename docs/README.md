@@ -13,11 +13,11 @@ Support for these others platforms will be added `Arduino`  `Particle Photon`  `
 
 ## Getting Started
 
-##### Include the library in the sketch
+#### Include the library in the sketch
 
 `#include <EasyBuzzer.h>`
 
-##### Set the pin where the buzzer is connected
+#### Set the pin where the buzzer is connected
 
 By default, the library is configured to use the pin number 4. You may change the default pin number, modifying the value of `DEFAULT_PIN`  in *Config.h* file. To set the pin number on the sketch, call the function `EasyBuzzer.setPin(pin)` on the setup.
 
@@ -28,7 +28,7 @@ void setup() {
 };
 ```
 
-##### Run the library
+#### Run the library
 
 ``` c++
 void loop() {
@@ -41,7 +41,7 @@ void loop() {
 
 ## Uses
 
-#### Regular Beep
+### Regular Beep
 
 Beep continuously at a given frequency.
 
@@ -75,7 +75,7 @@ EasyBuzzer.beep(
 
 
 
-#### Beep Sequence
+### Beep Sequence
 
 Create a sequence of beeps at a given frequency. 
 
@@ -94,7 +94,7 @@ EasyBuzzer.beep(
 
 
 
-#### Single Beep For A Duration 
+### Single Beep For A Duration 
 
 Single beep at a given frequency, for an specific duration.
 
@@ -119,7 +119,7 @@ EasyBuzzer.singleBeep(
 
 
 
-#### Stop Beeping
+### Stop Beeping
 
 Use this function to stop the beeping. You may call this function at all time, everywhere in the code.
 
