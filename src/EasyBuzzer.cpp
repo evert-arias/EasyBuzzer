@@ -69,11 +69,17 @@ void EasyBuzzerClass::stopBeep() {
 void EasyBuzzerClass::setPin(unsigned int pin) {
 	mPin = pin;
 }
-/* Set cycles duration values. */
-void EasyBuzzerClass::setDuration(int onDuration, int offDuration, int pauseDuration) {
-	mOnDuration = onDuration;
-	mOffDuration = offDuration;
-	mPauseDuration = pauseDuration;
+/* Set On duration. */
+void EasyBuzzerClass::setOnDuration(unsigned int duration) {
+	mOnDuration = duration;
+}
+/* Set Off duration. */
+void EasyBuzzerClass::setOffDuration(unsigned int duration) {
+	mOffDuration = duration;
+}
+/* Set Pause duration. */
+void EasyBuzzerClass::setPauseDuration(unsigned int duration) {
+	mPauseDuration = duration;
 }
 /* Update function that keeps the library running. */
 void EasyBuzzerClass::update() {

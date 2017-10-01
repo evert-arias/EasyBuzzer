@@ -41,8 +41,12 @@ public:
 	void stopBeep();
 	/* Set the pin where the buzzer is connected. */
 	void setPin(unsigned int pin);
-	/* Set cycles duration values. */
-	void setDuration(int onDuration, int offDuration, int pauseDuration);
+	/* Set On duration. */
+	void setOnDuration(unsigned int duration);
+	/* Set Off duration. */
+	void setOffDuration(unsigned int duration);
+	/* Set Pause duration. */
+	void setPauseDuration(unsigned int duration);
 	/* Update function that keeps the library running. */
 	void update();
 private:

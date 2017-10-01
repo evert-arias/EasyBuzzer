@@ -140,7 +140,9 @@ EasyBuzzer.stopBeep();
 The default duration values are defined in the *Config.h* file. You may change those values on the *Config.h* file or use the provided function to change them.
 
 ```c++
-EasyBuzzer.setDuration(onDuration, offDuration, pauseDuration);
+EasyBuzzer.setOnDuration(duration);		// Set On duration.
+EasyBuzzer.setOffDuration(duration);	// Set Off duration.
+EasyBuzzer.setPauseDuration(duration);	// Set Pause duration.
 ```
 
 
