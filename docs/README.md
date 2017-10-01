@@ -25,7 +25,7 @@ By default, the library is configured to use the pin number 4. You may change th
 int pin = 2;
 void setup() {
   EasyBuzzer.setPin(pin);
-};
+};  
 ```
 
 #### Run the library
@@ -43,7 +43,7 @@ void loop() {
 
 ### Regular Beep
 
-Beep continuously at a given frequency.
+###### Beep continuously at a given frequency.
 
 ```c++
 /* Beep continuously. */
@@ -52,20 +52,26 @@ EasyBuzzer.beep(
 );
 ```
 
-Beep at a given frequency an specific number of times.
+###### Beep at a given frequency an specific number of times. 
 
 ```c++
-/* Beep at a given frequency an specific number of times. */
+/* 
+	Beep at a given frequency an specific number of times. 
+	The default onDuration and offDuration is set in Config.h file. 
+*/
 EasyBuzzer.beep(
   frequency,	// Frequency in Hertz(HZ).
   beeps		// The number of beeps.
 );
 ```
 
-Beep at a given frequency an specific number of times, with callback functionality.
+###### Beep at a given frequency an specific number of times, with callback functionality.
 
 ```c++
-/* Beep at a given frequency an specific number of times, with callback functionality. */
+/* 
+	Beep at a given frequency an specific number of times, with callback functionality. 
+	The default onDuration and offDuration is set in Config.h file.
+*/
 EasyBuzzer.beep(
   frequency,	// Frequency in Hertz(HZ).
   beeps,	// The number of beeps.
@@ -77,7 +83,7 @@ EasyBuzzer.beep(
 
 ### Beep Sequence
 
-Create a sequence of beeps at a given frequency. 
+###### Create a sequence of beeps at a given frequency. 
 
 ```c++
 /* Create a sequence of beeps at a given frequency. */
@@ -96,7 +102,7 @@ EasyBuzzer.beep(
 
 ### Single Beep For A Duration 
 
-Single beep at a given frequency, for an specific duration.
+###### Single beep at a given frequency, for an specific duration.
 
 ```c++
 /* Single beep. */
@@ -106,7 +112,7 @@ EasyBuzzer.singleBeep(
 );
 ```
 
-Single beep at a given frequency, for an specific duration, with callback functionality.
+###### Single beep at a given frequency, for an specific duration, with callback functionality.
 
 ```c++
 /* Single beep at a given frequency, for an specific duration, with callback functionality. */
