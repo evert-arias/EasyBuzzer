@@ -11,7 +11,15 @@ Github:		https://github.com/evert-arias/EasyBuzzer
 
 /* Class constructor */
 EasyBuzzerClass::EasyBuzzerClass(){
+#ifdef ARDUINO
+	isArduino = true;
+#endif
+#ifndef ARDUINO
+	isArduino = false;
 	ledcSetup(mChannel, mFreq, mResolution);
+#endif // !ARDUINO
+
+
 }
 /* Class destructor */
 EasyBuzzerClass::~EasyBuzzerClass(){}
@@ -63,7 +71,13 @@ void EasyBuzzerClass::singleBeep(unsigned int frequency, unsigned int duration, 
 }
 /* Stop beeping. */
 void EasyBuzzerClass::stopBeep() {
+#ifdef ARDUINO
+	noTone(mPin);
+#endif // !	
+#ifndef ARDUINO
 	ledcDetachPin(mPin);
+#endif // !ARDUINO
+
 }
 /* Set the pin where the buzzer is connected. */
 void EasyBuzzerClass::setPin(unsigned int pin) {
@@ -106,6 +120,8 @@ void EasyBuzzerClass::update() {
 
 	unsigned int blinkingDuration = blinkDuration * mBeeps;
 	unsigned int timeInSequence = elapsedTime % sequenceDuration;
+
+#ifndef ARDUINO
 	if (timeInSequence < blinkingDuration && timeInSequence % blinkDuration < mOnDuration) {
 		ledcAttachPin(mPin, mChannel);
 		ledcWriteTone(mChannel, mFreq);
@@ -113,6 +129,19 @@ void EasyBuzzerClass::update() {
 	else {
 		ledcDetachPin(mPin);
 	};
+#endif // !ARDUINO
+
+#ifdef ARDUINO
+	if (timeInSequence < blinkingDuration && timeInSequence % blinkDuration < mOnDuration) {
+		tone(mPin, mFreq);
+	}
+	else {
+		noTone(mPin);
+	};
+#endif // ARDUINO
+
+
+
 }
 
 EasyBuzzerClass EasyBuzzer;

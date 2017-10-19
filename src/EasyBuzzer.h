@@ -50,6 +50,7 @@ public:
 	/* Update function that keeps the library running. */
 	void update();
 private:
+	bool isArduino = true;
 	unsigned int mPin = DEFAULT_PIN;
 	unsigned int mFreq = DEFAULT_FREQ;
 	unsigned int mChannel = DEFAULT_CHANNEL;
