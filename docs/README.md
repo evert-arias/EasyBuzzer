@@ -1,9 +1,7 @@
 # EasyBuzzer
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
-A library to easily make beeps with a Buzzer.
-
-> Recent changes: Added support for Arduino Platform.
+THE BEEP LIBRARY FOR ARDUINO
 
 *Fixes and new features as well as support for more platforms will be included in further releases.*
 
