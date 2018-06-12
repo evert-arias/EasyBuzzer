@@ -3,14 +3,6 @@
 
 THE BEEP LIBRARY FOR ARDUINO
 
-*Fixes and new features as well as support for more platforms will be included in further releases.*
-
-## Supported Platforms
-
-Currently supports the `Esp32` and `Arduino` platforms.
-
-Support for these others platforms will be added  `Particle Photon`  `Particle Electron`
-
 ## Getting Started
 
 #### Include the library in the sketch
