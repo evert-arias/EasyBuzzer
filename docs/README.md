@@ -1,7 +1,7 @@
 # EasyBuzzer
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
-THE BEEP LIBRARY FOR ARDUINO
+The Beep Library For Arduino
 
 ## Getting Started
 
