@@ -6,8 +6,8 @@ The Beep Library For Arduino
 ## What to expect in next updates
 
 - [ ] Fixes recommended by [dalidavila](https://github.com/dalidavila) in [Buzzer beeping forever](https://github.com/evert-arias/EasyBuzzer/issues/1)
-- [ ] Add support for multiple instances of `EasyBuzzer` Class, making possible to have more than one Buzzer.
-- [ ] Add shortcut functions to predefined sounds like; success, error and warning.
+- [ ] Support for multiple instances of `EasyBuzzer` Class, making possible to have more than one Buzzer.
+- [ ] Shortcut functions to predefined sounds like; success, error and warning.
 
 ## Getting Started
 
