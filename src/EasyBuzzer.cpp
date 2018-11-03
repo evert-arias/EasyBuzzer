@@ -65,6 +65,7 @@ void EasyBuzzerClass::singleBeep(unsigned int frequency, unsigned int duration, 
 }
 /* Stop beeping. */
 void EasyBuzzerClass::stopBeep() {
+	mStartTime = 0;
 #if defined __AVR_ATmega328P__  
 	noTone(mPin);
 #endif // !	
