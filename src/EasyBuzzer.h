@@ -18,6 +18,15 @@ Copyright (c) 2017 Evert Arias
 
 #include "Config.h"
 
+#ifdef ESP8266
+#define min _min
+#define max _max
+#endif
+#ifdef ESP32
+#define min _min
+#define max _max
+#endif
+
 class EasyBuzzerClass
 {
 public:
