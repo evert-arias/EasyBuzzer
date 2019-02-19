@@ -3,6 +3,12 @@
 
 The Beep Library For Arduino
 
+**​ This library has been tested on the following devices:**
+
+- Arduino UNO  :ok:
+- Arduino MEGA 2560 :ok:
+- ESP32 :ok:
+
 ## What to expect in next updates
 
 - [ ] Support for multiple instances of `EasyBuzzer` Class, making possible to have more than one Buzzer.
