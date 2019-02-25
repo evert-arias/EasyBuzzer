@@ -77,6 +77,7 @@ void EasyBuzzerClass::stopBeep()
 {
 #if defined ESP32
 	ledcDetachPin(mPin);
+	pinMode(mPin, INPUT);
 #else
 	noTone(mPin);
 #endif
