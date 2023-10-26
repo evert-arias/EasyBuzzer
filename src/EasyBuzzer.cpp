@@ -13,7 +13,6 @@ Github:		https://github.com/evert-arias/EasyBuzzer
 /* Class constructor */
 EasyBuzzerClass::EasyBuzzerClass()
 {
-	ledcSetup(mChannel,1000,10);
 }
 /* Class destructor */
 EasyBuzzerClass::~EasyBuzzerClass() {}
