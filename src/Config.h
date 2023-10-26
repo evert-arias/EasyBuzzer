@@ -16,7 +16,11 @@ Copyright (c) 2017 Evert Arias
 #define DEFAULT_FREQ		1000    // Default frequency.
 #define DEFAULT_CHANNEL		0		// Default PWM channel.
 #define DEFAULT_VOLUME	    0x1FF   // 10 bit resolution => 50% duty cycle is 0x3FF/2 = 0x1FF
-#define MINIMUM_INTERVAL    5       // Minimum interval allowed in milliseconds(ms).
+#define MINIMUM_INTERVAL    0      // Minimum interval allowed in milliseconds(ms).
+#define DEFAULT_START_FREQ	700     // Default start frequency for siren mode.
+#define DEFAULT_END_FREQ	800     // Default end frequency for siren mode.
+#define DEFAULT_SIREN_DELAY 45      // Default delay between siren frequency increment
+#define SIREN_INCREMENT     3
 
 #define DEFAULT_ON_DURATION		100 // Default ON duration of a cycle in milliseconds(ms).
 #define DEFAULT_OFF_DURATION	100 // Default OFF duration of a cycle in milliseconds(ms).

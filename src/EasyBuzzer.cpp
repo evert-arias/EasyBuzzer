@@ -13,6 +13,7 @@ Github:		https://github.com/evert-arias/EasyBuzzer
 /* Class constructor */
 EasyBuzzerClass::EasyBuzzerClass()
 {
+	ledcSetup(mChannel,1000,10);
 }
 /* Class destructor */
 EasyBuzzerClass::~EasyBuzzerClass() {}
@@ -39,6 +40,7 @@ void EasyBuzzerClass::beep(unsigned int frequency, unsigned int const onDuration
 /* Beep sequence at a given frequency, with callback functionality. */
 void EasyBuzzerClass::beep(unsigned int frequency, unsigned int const onDuration, unsigned int const offDuration, byte const beeps, unsigned int const pauseDuration, unsigned int const sequences, void (*finishedCallbackFunction)())
 {
+	mMode = Mode::BEEP;
 	mFreq = frequency;
 	mOnDuration = onDuration ? max(MINIMUM_INTERVAL, onDuration) : 0;
 	mOffDuration = offDuration ? max(MINIMUM_INTERVAL, offDuration) : 0;
@@ -62,8 +64,34 @@ void EasyBuzzerClass::singleBeep(unsigned int frequency, unsigned int duration, 
 {
 	beep(frequency, duration, 0, 1, DEFAULT_PAUSE_DURATION, 1, finishedCallbackFunction);
 }
+
+/** Start siren with the specified mode, the given start and end fequency and the provided delay */
+void EasyBuzzerClass::siren(bool riseAndFall, unsigned int startFrequency, unsigned int endFrequency, unsigned int delay)
+{
+	mMode = Mode::SIREN;
+	mSirenRiseAndFall = riseAndFall;
+	if(endFrequency > startFrequency)
+	{
+		mStartFreq = startFrequency;
+		mEndFreq = endFrequency;
+	}
+	else
+	{	// Reverse way
+		mStartFreq = endFrequency;
+		mEndFreq = startFrequency;
+		mSirenRise = false;
+	}
+	mFreq = startFrequency;
+	mSirenDelay = delay;
+	mStartTime = max(millis(), 1);
+	mLastRunTime = 0;
+	mTurnedOn = false;
+	mTurnedOff = false;
+	update();
+}
+
 /* Stop beeping. */
-void EasyBuzzerClass::stopBeep()
+void EasyBuzzerClass::stop()
 {
 	mBeeps = 0;
 #if defined ESP32
@@ -111,6 +139,20 @@ void EasyBuzzerClass::update()
 		return;
 	}
 
+	switch(mMode)
+	{
+		case Mode::SIREN :
+			updateSiren(currentTime);
+			break;
+		case Mode::BEEP :
+		default:
+			updateBeep(currentTime);
+			break;
+	}
+}
+
+void EasyBuzzerClass::updateBeep(unsigned long currentTime)
+{
 	unsigned long elapsedTime = currentTime - mStartTime;
 	unsigned int blinkDuration = mOnDuration + mOffDuration;
 	unsigned int sequenceDuration = blinkDuration * mBeeps + mPauseDuration - mOffDuration;
@@ -164,6 +206,64 @@ void EasyBuzzerClass::update()
 		noTone(mPin);
 	};
 #endif
+}
+
+void EasyBuzzerClass::updateSiren(unsigned long currentTime)
+{
+	if(!mTurnedOn)
+	{
+#if defined ESP32
+		ledcAttachPin(mPin, mChannel);
+		ledcWriteTone(mChannel, mFreq);
+		if(mVolume != DEFAULT_VOLUME)
+		{	// Set Volume by changing duty cycle
+			ledcWrite(mChannel,mVolume);
+		}
+#else
+		tone(mPin, mFreq);
+#endif
+		mTurnedOn = true;
+		mLastSirenUpdateTime = currentTime;
+	}
+	else if(currentTime - mLastSirenUpdateTime >= mSirenDelay)
+	{
+		if(mSirenRise)
+		{
+			mFreq+=SIREN_INCREMENT;
+			if(mFreq>=mEndFreq)
+			{
+				if(mSirenRiseAndFall)
+				{
+					mSirenRise = false;
+				}
+				else
+				{
+					mFreq = mStartFreq;
+				}
+			}
+		}
+		else
+		{
+			mFreq-=SIREN_INCREMENT;
+			if(mFreq<=mStartFreq)
+			{
+				if(mSirenRiseAndFall)
+				{
+					mSirenRise = true;
+				}
+				else
+				{
+					mFreq = mEndFreq;
+				}
+			}
+		}
+#if defined ESP32
+		ledcWriteTone(mChannel, mFreq);
+#else
+		tone(mPin, mFreq);
+#endif
+		mLastSirenUpdateTime = currentTime;
+	}
 }
 
 EasyBuzzerClass EasyBuzzer;
