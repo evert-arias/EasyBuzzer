@@ -13,9 +13,6 @@ Github:		https://github.com/evert-arias/EasyBuzzer
 /* Class constructor */
 EasyBuzzerClass::EasyBuzzerClass()
 {
-#if defined ESP32
-	ledcSetup(mChannel, mFreq, mResolution);
-#endif
 }
 /* Class destructor */
 EasyBuzzerClass::~EasyBuzzerClass() {}
@@ -37,16 +34,7 @@ void EasyBuzzerClass::beep(unsigned int frequency, unsigned int beeps, void (*fi
 /* Beep sequence at a given frequency. */
 void EasyBuzzerClass::beep(unsigned int frequency, unsigned int const onDuration, unsigned int const offDuration, byte const beeps, unsigned int const pauseDuration, unsigned int const sequences)
 {
-	mFreq = frequency;
-	mOnDuration = onDuration ? max(MINIMUM_INTERVAL, onDuration) : 0;
-	mOffDuration = offDuration ? max(MINIMUM_INTERVAL, offDuration) : 0;
-	mBeeps = beeps;
-	mPauseDuration = pauseDuration ? max(MINIMUM_INTERVAL, pauseDuration) : 0;
-	mSequences = sequences;
-	mFinishedCallbackFunction = NULL;
-	mStartTime = max(millis(), 1);
-	mLastRunTime = 0;
-	update();
+	beep(frequency,onDuration,offDuration,beeps,pauseDuration,sequences,NULL);
 }
 /* Beep sequence at a given frequency, with callback functionality. */
 void EasyBuzzerClass::beep(unsigned int frequency, unsigned int const onDuration, unsigned int const offDuration, byte const beeps, unsigned int const pauseDuration, unsigned int const sequences, void (*finishedCallbackFunction)())
@@ -60,21 +48,24 @@ void EasyBuzzerClass::beep(unsigned int frequency, unsigned int const onDuration
 	mFinishedCallbackFunction = finishedCallbackFunction;
 	mStartTime = max(millis(), 1);
 	mLastRunTime = 0;
+	mTurnedOn = false;
+	mTurnedOff = false;
 	update();
 }
 /* Start beeping at a given frequency, for an specific duration. */
 void EasyBuzzerClass::singleBeep(unsigned int frequency, unsigned int duration)
 {
-	beep(frequency, duration, mOffDuration, 1, mPauseDuration, 1, NULL);
+	beep(frequency, duration, 0, 1, DEFAULT_PAUSE_DURATION, 1, NULL);
 }
 /* Start beeping at a given frequency, for an specific duration, with callback functionality. */
 void EasyBuzzerClass::singleBeep(unsigned int frequency, unsigned int duration, void (*finishedCallbackFunction)())
 {
-	beep(frequency, duration, mOffDuration, 1, mPauseDuration, 1, finishedCallbackFunction);
+	beep(frequency, duration, 0, 1, DEFAULT_PAUSE_DURATION, 1, finishedCallbackFunction);
 }
 /* Stop beeping. */
 void EasyBuzzerClass::stopBeep()
 {
+	mBeeps = 0;
 #if defined ESP32
 	ledcDetachPin(mPin);
 	pinMode(mPin, INPUT);
@@ -102,6 +93,10 @@ void EasyBuzzerClass::setPauseDuration(unsigned int duration)
 {
 	mPauseDuration = duration;
 }
+
+/* Set Buzzer Volume. */
+void EasyBuzzerClass::setVolume(byte volume) { mVolume = map(volume,0,0xFF,0,0x3FF); }
+
 /* Update function that keeps the library running. */
 void EasyBuzzerClass::update()
 {
@@ -123,6 +118,8 @@ void EasyBuzzerClass::update()
 	if (!sequenceDuration || (mSequences != 0 && elapsedTime / sequenceDuration >= mSequences))
 	{
 		mStartTime = 0;
+		mTurnedOn = false;
+		mTurnedOff = false;
 		if (mFinishedCallbackFunction)
 		{
 			mFinishedCallbackFunction();
@@ -136,12 +133,26 @@ void EasyBuzzerClass::update()
 #if defined ESP32
 	if (timeInSequence < blinkingDuration && timeInSequence % blinkDuration < mOnDuration)
 	{
-		ledcAttachPin(mPin, mChannel);
-		ledcWriteTone(mChannel, mFreq);
+		if(!mTurnedOn)
+		{
+			ledcAttachPin(mPin, mChannel);
+			ledcWriteTone(mChannel, mFreq);
+			if(mVolume != DEFAULT_VOLUME)
+			{	// Set Volume by changing duty cycle
+				ledcWrite(mChannel,mVolume);
+			}
+			mTurnedOn = true;
+			mTurnedOff = false;
+		}
 	}
 	else
 	{
-		ledcDetachPin(mPin);
+		if(!mTurnedOff)
+		{
+			ledcDetachPin(mPin);
+			mTurnedOff = true;
+			mTurnedOn = false;
+		}
 	};
 #else
 	if (timeInSequence < blinkingDuration && timeInSequence % blinkDuration < mOnDuration)
