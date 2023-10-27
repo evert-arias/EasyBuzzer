@@ -60,8 +60,6 @@ class EasyBuzzerClass
 	void setOffDuration(unsigned int duration);
 	/* Set Pause duration. */
 	void setPauseDuration(unsigned int duration);
-	/* Set buzzer volume. */
-  	void setVolume(byte volume);
 	/* Update function that keeps the library running. */
 	void update();
 
@@ -76,7 +74,7 @@ class EasyBuzzerClass
 	unsigned int mPauseDuration = DEFAULT_PAUSE_DURATION;
 	unsigned int mSequences;
 	unsigned int mVolume = DEFAULT_VOLUME;
-	unsigned long mStartTime;
+	unsigned long mStartTime = 0;
 	unsigned long mLastRunTime;
 	void (*mFinishedCallbackFunction)();
 	bool mTurnedOn = false;

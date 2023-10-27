@@ -92,13 +92,8 @@ void EasyBuzzerClass::siren(bool riseAndFall, unsigned int startFrequency, unsig
 /* Stop beeping. */
 void EasyBuzzerClass::stop()
 {
-	mBeeps = 0;
-#if defined ESP32
-	ledcDetachPin(mPin);
-	pinMode(mPin, INPUT);
-#else
+	mStartTime = 0;
 	noTone(mPin);
-#endif
 }
 /* Set the pin where the buzzer is connected. */
 void EasyBuzzerClass::setPin(unsigned int pin)
@@ -120,9 +115,6 @@ void EasyBuzzerClass::setPauseDuration(unsigned int duration)
 {
 	mPauseDuration = duration;
 }
-
-/* Set Buzzer Volume. */
-void EasyBuzzerClass::setVolume(byte volume) { mVolume = map(volume,0,0xFF,0,0x3FF); }
 
 /* Update function that keeps the library running. */
 void EasyBuzzerClass::update()
@@ -171,17 +163,11 @@ void EasyBuzzerClass::updateBeep(unsigned long currentTime)
 	unsigned int blinkingDuration = blinkDuration * mBeeps;
 	unsigned int timeInSequence = elapsedTime % sequenceDuration;
 
-#if defined ESP32
 	if (timeInSequence < blinkingDuration && timeInSequence % blinkDuration < mOnDuration)
 	{
 		if(!mTurnedOn)
 		{
-			ledcAttachPin(mPin, mChannel);
-			ledcWriteTone(mChannel, mFreq);
-			if(mVolume != DEFAULT_VOLUME)
-			{	// Set Volume by changing duty cycle
-				ledcWrite(mChannel,mVolume);
-			}
+			tone(mPin, mFreq);
 			mTurnedOn = true;
 			mTurnedOff = false;
 		}
@@ -190,37 +176,18 @@ void EasyBuzzerClass::updateBeep(unsigned long currentTime)
 	{
 		if(!mTurnedOff)
 		{
-			ledcDetachPin(mPin);
+		noTone(mPin);
 			mTurnedOff = true;
 			mTurnedOn = false;
 		}
 	};
-#else
-	if (timeInSequence < blinkingDuration && timeInSequence % blinkDuration < mOnDuration)
-	{
-		tone(mPin, mFreq);
-	}
-	else
-	{
-		noTone(mPin);
-	};
-#endif
 }
 
 void EasyBuzzerClass::updateSiren(unsigned long currentTime)
 {
 	if(!mTurnedOn)
 	{
-#if defined ESP32
-		ledcAttachPin(mPin, mChannel);
-		ledcWriteTone(mChannel, mFreq);
-		if(mVolume != DEFAULT_VOLUME)
-		{	// Set Volume by changing duty cycle
-			ledcWrite(mChannel,mVolume);
-		}
-#else
 		tone(mPin, mFreq);
-#endif
 		mTurnedOn = true;
 		mLastSirenUpdateTime = currentTime;
 	}
@@ -256,11 +223,7 @@ void EasyBuzzerClass::updateSiren(unsigned long currentTime)
 				}
 			}
 		}
-#if defined ESP32
-		ledcWriteTone(mChannel, mFreq);
-#else
 		tone(mPin, mFreq);
-#endif
 		mLastSirenUpdateTime = currentTime;
 	}
 }
