@@ -73,7 +73,6 @@ class EasyBuzzerClass
 	unsigned int mOffDuration = DEFAULT_OFF_DURATION;
 	unsigned int mPauseDuration = DEFAULT_PAUSE_DURATION;
 	unsigned int mSequences;
-	unsigned int mVolume = DEFAULT_VOLUME;
 	unsigned long mStartTime = 0;
 	unsigned long mLastRunTime;
 	void (*mFinishedCallbackFunction)();
