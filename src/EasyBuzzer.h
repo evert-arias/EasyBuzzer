@@ -19,6 +19,8 @@ Github:		https://github.com/evert-arias/EasyBuzzer
 
 #include "Config.h"
 
+#define MAX_CUSTOM(a,b) ((a)>(b)?(a):(b))
+#define MIN_CUSTOM(a, b) ((a) < (b) ? (a) : (b))
 
 class EasyBuzzerClass
 {
