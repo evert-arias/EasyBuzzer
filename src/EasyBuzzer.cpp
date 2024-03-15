@@ -2,13 +2,16 @@
 Name:		EasyBuzzer.cpp
 Version:	1.0.3
 Created:	9/29/2017 12:03:48 AM
-Updated:	2/19/2019 12:19:00 AM
+Updated:	3/15/2024 02:11:00 AM
 Author:		Evert Arias
 Github:		https://github.com/evert-arias/EasyBuzzer
 			Copyright (c) 2019 Evert Arias
 */
 
 #include "EasyBuzzer.h"
+
+
+
 
 /* Class constructor */
 EasyBuzzerClass::EasyBuzzerClass()
@@ -38,13 +41,13 @@ void EasyBuzzerClass::beep(unsigned int frequency, unsigned int beeps, void (*fi
 void EasyBuzzerClass::beep(unsigned int frequency, unsigned int const onDuration, unsigned int const offDuration, byte const beeps, unsigned int const pauseDuration, unsigned int const sequences)
 {
 	mFreq = frequency;
-	mOnDuration = onDuration ? max(MINIMUM_INTERVAL, onDuration) : 0;
-	mOffDuration = offDuration ? max(MINIMUM_INTERVAL, offDuration) : 0;
+	mOnDuration = onDuration ? MAX_CUSTOM(MINIMUM_INTERVAL, onDuration) : 0;
+	mOffDuration = offDuration ? MAX_CUSTOM(MINIMUM_INTERVAL, offDuration) : 0;
 	mBeeps = beeps;
-	mPauseDuration = pauseDuration ? max(MINIMUM_INTERVAL, pauseDuration) : 0;
+	mPauseDuration = pauseDuration ? MAX_CUSTOM(MINIMUM_INTERVAL, pauseDuration) : 0;
 	mSequences = sequences;
 	mFinishedCallbackFunction = NULL;
-	mStartTime = max(millis(), 1);
+	mStartTime = MAX_CUSTOM(millis(), 1);
 	mLastRunTime = 0;
 	update();
 }
@@ -52,13 +55,13 @@ void EasyBuzzerClass::beep(unsigned int frequency, unsigned int const onDuration
 void EasyBuzzerClass::beep(unsigned int frequency, unsigned int const onDuration, unsigned int const offDuration, byte const beeps, unsigned int const pauseDuration, unsigned int const sequences, void (*finishedCallbackFunction)())
 {
 	mFreq = frequency;
-	mOnDuration = onDuration ? max(MINIMUM_INTERVAL, onDuration) : 0;
-	mOffDuration = offDuration ? max(MINIMUM_INTERVAL, offDuration) : 0;
+	mOnDuration = onDuration ? MAX_CUSTOM(MINIMUM_INTERVAL, onDuration) : 0;
+	mOffDuration = offDuration ? MAX_CUSTOM(MINIMUM_INTERVAL, offDuration) : 0;
 	mBeeps = beeps;
-	mPauseDuration = pauseDuration ? max(MINIMUM_INTERVAL, pauseDuration) : 0;
+	mPauseDuration = pauseDuration ? MAX_CUSTOM(MINIMUM_INTERVAL, pauseDuration) : 0;
 	mSequences = sequences;
 	mFinishedCallbackFunction = finishedCallbackFunction;
-	mStartTime = max(millis(), 1);
+	mStartTime = MAX_CUSTOM(millis(), 1);
 	mLastRunTime = 0;
 	update();
 }
@@ -127,6 +130,19 @@ void EasyBuzzerClass::update()
 		{
 			mFinishedCallbackFunction();
 		}
+		
+		// Apaga el zumbador
+		#if defined ESP32
+
+			ledcDetachPin(mPin);
+
+		#else
+
+		
+			noTone(mPin);
+
+		#endif
+		
 		return;
 	};
 

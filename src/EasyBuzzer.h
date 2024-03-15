@@ -2,7 +2,7 @@
 Name:		EasyBuzzer.h
 Version:	1.0.3
 Created:	9/29/2017 12:03:48 AM
-Updated:	2/19/2019 12:19:00 AM
+Updated:	3/15/2024 02:11:00 AM
 Author:		Evert Arias
 Github:		https://github.com/evert-arias/EasyBuzzer
 			Copyright (c) 2019 Evert Arias
@@ -19,14 +19,8 @@ Github:		https://github.com/evert-arias/EasyBuzzer
 
 #include "Config.h"
 
-#ifdef ESP8266
-#define min _min
-#define max _max
-#endif
-#ifdef ESP32
-#define min _min
-#define max _max
-#endif
+#define MAX_CUSTOM(a,b) ((a)>(b)?(a):(b))
+#define MIN_CUSTOM(a, b) ((a) < (b) ? (a) : (b))
 
 class EasyBuzzerClass
 {
