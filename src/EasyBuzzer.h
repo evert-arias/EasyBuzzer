@@ -2,7 +2,7 @@
 Name:		EasyBuzzer.h
 Version:	1.0.3
 Created:	9/29/2017 12:03:48 AM
-Updated:	2/19/2024 01:58:00 AM
+Updated:	3/15/2024 02:11:00 AM
 Author:		Evert Arias
 Github:		https://github.com/evert-arias/EasyBuzzer
 			Copyright (c) 2019 Evert Arias
